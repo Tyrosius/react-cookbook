@@ -1,7 +1,11 @@
-import logo from './logo.svg';
+import { createClient } from "contentful"
 import './App.css';
-
+import { useState, useEffect } from "react";
 function App() {
+  const client = createClient({
+    space: "ge9j2kgjaink",
+    accessToken: "sTqTi2aDlEQqUaqMjFihRlAIBVvxdaxX8O-x74pvpPU",
+  })
   return (
     <div className="App">
       <header className="App-header">
