@@ -1,6 +1,9 @@
 import { createClient } from "contentful"
 import './App.css';
 import { useState, useEffect } from "react";
+import { Kopf } from "./componentes/Kopf";
+import { Footer } from "./componentes/Footer";
+
 function App() {
   const client = createClient({
     space: "ge9j2kgjaink",
@@ -9,8 +12,9 @@ function App() {
 
   const getData = async () => {
     const entryItems = await client.getEntries();
-    console.log("ENTRIES: ", entryItems.items);
-    //setRecipes(entryItems.items);
+    console.log("ENTRIES: ", entryItems.items[0].fields.logo.fields.file.url);
+    //setRecipes(entryItems.items[1]);
+    //setLogos(entryItems.items[0]);
   };
 
   useEffect(() => {
@@ -22,8 +26,8 @@ function App() {
       <div class="container-fluid">
         {/* NavBar componente */}
 
-        {/* kopf componente */}
-
+        {/* Kopf componente */}
+        <Kopf />
       </div >
       <div class="container-fluid">
         <div class="col-md-12 col-lg-8 mx-auto card-box">
@@ -31,13 +35,13 @@ function App() {
           <div class="row row-cols-1 row-cols-md-2 g-4">
             {/*             <!--durch map ersetzen-->
  */}
-            {/* rezept componente 1 */}
+            {/* rezept componente rezeptState mitgeben */}
             {/*<!--ende durch map ersetzen-->
  */}          </div>
         </div>
       </div >
-      {/* footer componente */}
-
+      {/* footer componente logoState mitgeben*/}
+      <Footer />
     </>
   );
 }
