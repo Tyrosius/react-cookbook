@@ -1,6 +1,5 @@
 import { Zutatenliste } from "./Zutatenliste"
 export const Rezept = ({ recipe }) => {
-    console.log("in Rezept", recipe)
     return (
         <div className="col ">
             <div className="card h-100">

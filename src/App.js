@@ -3,7 +3,8 @@ import './App.css';
 import { useState, useEffect } from "react";
 import { Kopf } from "./componentes/Kopf";
 import { Footer } from "./componentes/Footer";
-import { Rezept } from "./componentes/Rezept"
+import { Rezept } from "./componentes/Rezept";
+import { NavBar } from "./componentes/NavBar";
 
 function App() {
   const client = createClient({
@@ -29,7 +30,7 @@ function App() {
     <>
       <div className="container-fluid">
         {/* NavBar componente */}
-
+        <NavBar recipes={recipes} />
         {/* Kopf componente */}
         <Kopf />
       </div >
@@ -41,7 +42,6 @@ function App() {
  */}
             {
               recipes.map((recipe, i) => {
-                console.log(recipe)
                 return (< Rezept key={recipe.sys.id} recipe={recipe} />)
               })
             }
