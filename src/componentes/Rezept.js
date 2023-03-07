@@ -1,18 +1,24 @@
-<div class="col ">
-    <div class="card h-100">
+import { Zutatenliste } from "./Zutatenliste"
+export const Rezept = ({ recipe }) => {
+    console.log("in Rezept", recipe)
+    return (
+        <div className="col ">
+            <div className="card h-100">
 
-        <div class="hovereffect">
-            <img src="img/kohlsuppe-aus-portugal-mit-chorizo-49365.jpg" class="card-img-top img-responsive" alt="..." />
-            <div class="overlay" style="background-color: rgba(51, 51, 51, 0.5);">
-                <a class="info" href="kohlsuppe.html">Kohlsuppe</a>
+                <div className="hovereffect">
+                    <img src="img/kohlsuppe-aus-portugal-mit-chorizo-49365.jpg" className="card-img-top img-responsive" alt="..." />
+                    <div className="overlay" >
+                        <a className="info" href="">Kohlsuppe</a>
+                    </div>
+                </div>
+
+                <div className="card-body">
+                    <h5 className="card-title">{recipe.fields.rezeptName}</h5>
+                    <Zutatenliste ingredients={recipe.fields.zutaten} />
+                    <p className="card-text">{recipe.fields.zubereitung_1}</p>
+                    <button className="btn-rezept" >Zum
+                        Rezept</button>{/* <!--für single page als popup--> */}
+                </div>
             </div>
-        </div>
-
-        <div class="card-body">
-            <h5 class="card-title">Kohlsuppe aus Portugal</h5>
-            <p class="card-text">Die knallt!</p>
-            <button class="btn-rezept" onclick="window.location.href = 'kohlsuppe.html';">Zum
-                Rezept</button>{/* <!--für single page als popup--> */}
-        </div>
-    </div>
-</div>
+        </div>)
+}

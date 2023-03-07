@@ -3,6 +3,7 @@ import './App.css';
 import { useState, useEffect } from "react";
 import { Kopf } from "./componentes/Kopf";
 import { Footer } from "./componentes/Footer";
+import { Rezept } from "./componentes/Rezept"
 
 function App() {
   const client = createClient({
@@ -10,11 +11,14 @@ function App() {
     accessToken: "sTqTi2aDlEQqUaqMjFihRlAIBVvxdaxX8O-x74pvpPU",
   })
 
+
+  const [recipes, setRecipes] = useState([])
+
   const getData = async () => {
     const entryItems = await client.getEntries();
-    console.log("ENTRIES: ", entryItems.items[0].fields.logo.fields.file.url);
-    //setRecipes(entryItems.items[1]);
-    //setLogos(entryItems.items[0]);
+    console.log("ENTRIES: ", entryItems.items);
+    setRecipes(entryItems.items);
+
   };
 
   useEffect(() => {
@@ -23,18 +27,24 @@ function App() {
 
   return (
     <>
-      <div class="container-fluid">
+      <div className="container-fluid">
         {/* NavBar componente */}
 
         {/* Kopf componente */}
         <Kopf />
       </div >
-      <div class="container-fluid">
-        <div class="col-md-12 col-lg-8 mx-auto card-box">
+      <div className="container-fluid">
+        <div className="col-md-12 col-lg-8 mx-auto card-box">
           <h2>Die beliebtesten Rezepte im Februar</h2>
-          <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div className="row row-cols-1 row-cols-md-2 g-4">
             {/*             <!--durch map ersetzen-->
  */}
+            {
+              recipes.map((recipe, i) => {
+                console.log(recipe)
+                return (< Rezept key={recipe.sys.id} recipe={recipe} />)
+              })
+            }
             {/* rezept componente rezeptState mitgeben */}
             {/*<!--ende durch map ersetzen-->
  */}          </div>
