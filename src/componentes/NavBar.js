@@ -22,7 +22,7 @@ export const NavBar = ({ recipes }) => {
                         <li className="nav-item">
                             <a className="nav-link" href="#">BLOG</a>
                         </li>
-                        <li className="nav-item dropdown"> {/* TODO dropdown toggle? */}
+                        <li className="nav-item dropdown"> {/* TODO dropdown toggle? https://react-bootstrap.github.io/components/dropdowns/ */}
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 REZEPTE
