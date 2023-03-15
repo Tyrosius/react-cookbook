@@ -8,8 +8,8 @@ import { NavBar } from "./componentes/NavBar";
 
 function App() {
   const client = createClient({
-    space: "ge9j2kgjaink",
-    accessToken: "sTqTi2aDlEQqUaqMjFihRlAIBVvxdaxX8O-x74pvpPU",
+    space: process.env.REACT_APP_SPACE,
+    accessToken: process.env.REACT_APP_CHIP,
   })
 
 
@@ -28,6 +28,7 @@ function App() {
 
   return (
     <>
+      <h3>{process.env.REACT_APP_TEST}</h3>
       <div className="container-fluid">
         {/* NavBar componente */}
         <NavBar recipes={recipes} />
