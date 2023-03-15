@@ -1,5 +1,8 @@
+import { useState } from "react"
+import { Button, Collapse } from "react-bootstrap"
 import { Zutatenliste } from "./Zutatenliste"
 export const Rezept = ({ recipe }) => {
+    const [colapsed, setColapsed] = useState(true)
     return (
         <div className="col ">
             <div className="card h-100">
@@ -13,11 +16,24 @@ export const Rezept = ({ recipe }) => {
 
                 <div className="card-body">
                     <h5 className="card-title">{recipe.fields.rezeptName}</h5>
-                    <Zutatenliste ingredients={recipe.fields.zutaten} />
-                    <p className="card-text">{recipe.fields.zubereitung_1}</p>
-                    <button className="btn-rezept" >Zum
-                        Rezept</button>{/* <!--für single page als popup?--> */}
+                    <Collapse in={!colapsed}>
+                        <div id="rezeptdetails">
+                            <Zutatenliste ingredients={recipe.fields.zutaten} />
+                            <p className="card-text">{recipe.fields.zubereitung_1}</p>
+                        </div>
+                    </Collapse>
+                    <Button onClick={() => setColapsed(!colapsed)} aria-controls="rezeptdetails" className="btn-rezept" >Zum
+                        Rezept</Button>{/* <!--für single page als popup?--> */}
                 </div>
             </div>
         </div>)
 }
+/*                 <DropdownButton variant="nav-item" title="Rezepte">
+                            {recipes ? recipes.map((recipe, i) => {
+                                return (
+                                    <>
+                                        <Dropdown.Item eventKey={i}>{recipe.fields.rezeptName}</Dropdown.Item>
+                                    </>
+                                )
+                            }) : null}
+                        </DropdownButton> */
