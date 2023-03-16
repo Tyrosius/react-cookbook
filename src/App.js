@@ -8,8 +8,8 @@ import { NavBar } from "./componentes/NavBar";
 
 function App() {
   const client = createClient({
-    space: "ge9j2kgjaink",
-    accessToken: "sTqTi2aDlEQqUaqMjFihRlAIBVvxdaxX8O-x74pvpPU",
+    space: process.env.REACT_APP_SPACE,
+    accessToken: process.env.REACT_APP_CHIP,
   })
 
 
@@ -28,6 +28,7 @@ function App() {
 
   return (
     <>
+      <h3>{process.env.REACT_APP_TEST}</h3>
       <div className="container-fluid">
         {/* NavBar componente */}
         <NavBar recipes={recipes} />
@@ -36,7 +37,7 @@ function App() {
       </div >
       <div className="container-fluid">
         <div className="col-md-12 col-lg-8 mx-auto card-box">
-          <h2>Die beliebtesten Rezepte im Februar</h2>
+          <h2>Die beliebtesten Rezepte im März</h2>
           <div className="row row-cols-1 row-cols-md-2 g-4">
             {/*             <!--durch map ersetzen-->
  */}
