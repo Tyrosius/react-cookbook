@@ -37,7 +37,7 @@ function App() {
       </div >
       <div className="container-fluid">
         <div className="col-md-12 col-lg-8 mx-auto card-box">
-          <h2>Die beliebtesten Rezepte im Februar</h2>
+          <h2>Die beliebtesten Rezepte im März</h2>
           <div className="row row-cols-1 row-cols-md-2 g-4">
             {/*             <!--durch map ersetzen-->
  */}

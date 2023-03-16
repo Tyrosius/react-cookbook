@@ -1,15 +1,19 @@
-import { Dropdown, DropdownButton, Navbar, Nav } from "react-bootstrap"
+
+import { Dropdown, DropdownButton, Navbar, Nav } from "react-bootstrap";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 export const NavBar = ({ recipes }) => {
-    console.log(recipes)
     return (
         <header className="row">
 
             {/* <!--Navbar--> */}
             <Navbar className="navbar col-md-12 col-lg-8 mx-auto" expand="lg">
-                <a className="navbar-brand" href="#"><lottie-player
-                    src={`{https://assets5.lottiefiles.com/packages/lf20_ygOY09e7vS.json}`} background="transparent" speed="1"
-                    style={{ width: 120 + "px", height: 120 + "px" }} loop autoplay></lottie-player></a>
+                <a className="navbar-brand" href="#"><Player
+              autoplay
+              loop
+              src="https://assets5.lottiefiles.com/packages/lf20_ygOY09e7vS.json"
+              style={{ height: "90px", width: "90px" }}
+            ></Player></a>
 
                 <Navbar.Toggle bsPrefix="navbar-toggler"
                     aria-controls="navbarSupportedContent" />

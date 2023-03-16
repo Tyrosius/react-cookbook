@@ -1,4 +1,6 @@
 import { Zutatenliste } from "./Zutatenliste"
+/* import { Rezeptbilder} from "./Rezeptbilder" */
+
 export const Rezept = ({ recipe }) => {
     const prepArray = recipe.fields.zubereitung_1.split("\n")
     return (
@@ -6,9 +8,9 @@ export const Rezept = ({ recipe }) => {
             <div className="card h-100">
 
                 <div className="hovereffect">{/* TODO hauptbild einbauen */}
-                    <img src="img/kohlsuppe-aus-portugal-mit-chorizo-49365.jpg" className="card-img-top img-responsive" alt="..." />
+                    <img src={recipe.fields.mainPic.fields.file.url} width="100%"/>
                     <div className="overlay" >
-                        <a className="info" href="">Kohlsuppe</a>
+                        <a className="info" href="">{recipe.fields.rezeptName}</a>
                     </div>
                 </div>
 
