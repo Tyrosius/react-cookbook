@@ -14,9 +14,9 @@ export const Rezept = ({ recipe }) => {
             <div className="card h-100">
 
                 <div className="hovereffect">{/* TODO hauptbild einbauen */}
-                    <img src={recipe.fields.mainPic.fields.file.url} width="100%"/>
+                    <img src={recipe.fields.mainPic.fields.file.url} width="100%" />
                     <div className="overlay" >
-                        <a className="info" href="">{recipe.fields.rezeptName}</a>
+                        <a className="info" onClick={() => setColapsed(!colapsed)} aria-controls="rezeptdetails">{recipe.fields.rezeptName}</a>
                     </div>
                 </div>
 
@@ -26,23 +26,19 @@ export const Rezept = ({ recipe }) => {
                     <Collapse in={!colapsed}>
                         <div id="rezeptdetails">
                             <Zutatenliste ingredients={recipe.fields.zutaten} />
-                            <p className="card-text">{recipe.fields.zubereitung_1}</p>
+                            <div>
+                                <h4>{prepArray.splice(0, 1)}</h4>
+                                {prepArray.map((step) => {
+                                    return (
+                                        <p>{step}</p>
+                                    )
+                                })}
+                            </div>
                         </div>
                     </Collapse>
                     <Button onClick={() => setColapsed(!colapsed)} aria-controls="rezeptdetails" className="btn-rezept" >Zum
                         Rezept</Button>{/* <!--für single page als popup?--> */}
 
-                    <Zutatenliste ingredients={recipe.fields.zutaten} />
-                    <div>
-                        <h4>{prepArray.splice(0, 1)}</h4>
-                        {prepArray.map((step) => {
-                            return (
-                                <p>{step}</p>
-                            )
-                        })}
-                    </div>
-                    <button className="btn-rezept" >Zum
-                        Rezept</button>{/* <!--für single page als popup?--> */}
 
                 </div>
             </div>

@@ -8,8 +8,8 @@ import { NavBar } from "./componentes/NavBar";
 
 function App() {
   const client = createClient({
-    space: process.env.REACT_APP_SPACE,
-    accessToken: process.env.REACT_APP_CHIP,
+    space: "ge9j2kgjaink",
+    accessToken: "sTqTi2aDlEQqUaqMjFihRlAIBVvxdaxX8O-x74pvpPU",
   })
 
 
@@ -28,7 +28,6 @@ function App() {
 
   return (
     <>
-      <h3>{process.env.REACT_APP_TEST}</h3>
       <div className="container-fluid">
         {/* NavBar componente */}
         <NavBar recipes={recipes} />
@@ -43,7 +42,10 @@ function App() {
  */}
             {
               recipes.map((recipe, i) => {
-                return (< Rezept key={recipe.sys.id} recipe={recipe} />)
+                return (<div id={recipe.sys.id} >
+                  < Rezept key={recipe.sys.id} recipe={recipe} />
+                </div>
+                )
               })
             }
             {/* rezept componente rezeptState mitgeben */}

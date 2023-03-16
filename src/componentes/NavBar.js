@@ -9,11 +9,11 @@ export const NavBar = ({ recipes }) => {
             {/* <!--Navbar--> */}
             <Navbar className="navbar col-md-12 col-lg-8 mx-auto" expand="lg">
                 <a className="navbar-brand" href="#"><Player
-              autoplay
-              loop
-              src="https://assets5.lottiefiles.com/packages/lf20_ygOY09e7vS.json"
-              style={{ height: "90px", width: "90px" }}
-            ></Player></a>
+                    autoplay
+                    loop
+                    src="https://assets5.lottiefiles.com/packages/lf20_ygOY09e7vS.json"
+                    style={{ height: "90px", width: "90px" }}
+                ></Player></a>
 
                 <Navbar.Toggle bsPrefix="navbar-toggler"
                     aria-controls="navbarSupportedContent" />
@@ -32,7 +32,7 @@ export const NavBar = ({ recipes }) => {
                             {recipes ? recipes.map((recipe, i) => {
                                 return (
                                     <>
-                                        <Dropdown.Item eventKey={i}>{recipe.fields.rezeptName}</Dropdown.Item>
+                                        <Dropdown.Item href={`#${recipe.sys.id}`} eventKey={i}>{recipe.fields.rezeptName}</Dropdown.Item>
                                     </>
                                 )
                             }) : null}
