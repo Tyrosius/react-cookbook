@@ -30,6 +30,7 @@ export const NavBar = ({ recipes }) => {
                         </Nav.Item>
                         <DropdownButton variant="nav-item" title="Rezepte">
                             {recipes ? recipes.map((recipe, i) => {
+                                /*TODO variablen anpassen */
                                 return (
                                     <>
                                         <Dropdown.Item href={`#${recipe.sys.id}`} eventKey={i}>{recipe.fields.rezeptName}</Dropdown.Item>

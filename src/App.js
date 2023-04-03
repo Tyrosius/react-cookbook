@@ -16,6 +16,13 @@ function App() {
   const [recipes, setRecipes] = useState([])
 
   const getData = async () => {
+    /* rezeptdaten daten holen */
+    /* zutaten holen(inkl. masseinheit) */
+    /* zubereitungen holen */
+    /* rezeptobjekt erstellen aus: id, name, bild von rezeptdaten + (zutatenname,menge,masseinheit aus zutaten) liste nach rezeptId + (schritt aus zubereitung) liste nach rezeptId */
+    /* rezeptobjekt zu recipes hinzufügen */
+    /* evtl schon in api */
+
     const entryItems = await client.getEntries();
     console.log("ENTRIES: ", entryItems.items);
     setRecipes(entryItems.items);
@@ -44,31 +51,27 @@ function App() {
   return (
     <>
       <div className="container-fluid">
-        {/* NavBar componente */}
+        {/*  TODO variable anpassen? */}
         <NavBar recipes={recipes} />
-        {/* Kopf componente */}
         <Kopf />
       </div >
       <div className="container-fluid">
         <div className="col-md-12 col-lg-8 mx-auto card-box">
           <h2>Die beliebtesten Rezepte im {monthArray[month]}</h2>
           <div className="row row-cols-1 row-cols-md-2 g-4">
-            {/*             <!--durch map ersetzen-->
- */}
             {
+              /* TODO variable anpassen? */
               recipes.map((recipe, i) => {
+                /* variablen anpassen */
                 return (<div id={recipe.sys.id} >
                   < Rezept key={recipe.sys.id} recipe={recipe} />
                 </div>
                 )
               })
             }
-            {/* rezept componente rezeptState mitgeben */}
-            {/*<!--ende durch map ersetzen-->
- */}          </div>
+          </div>
         </div>
       </div >
-      {/* footer componente logoState mitgeben*/}
       <Footer />
     </>
   );
