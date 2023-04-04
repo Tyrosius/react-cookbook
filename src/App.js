@@ -7,19 +7,14 @@ import { Rezept } from "./componentes/Rezept";
 import { NavBar } from "./componentes/NavBar";
 
 function App() {
-  const client = createClient({
-    space: "ge9j2kgjaink",
-    accessToken: "sTqTi2aDlEQqUaqMjFihRlAIBVvxdaxX8O-x74pvpPU",
-  })
-
 
   const [recipes, setRecipes] = useState([])
 
   const getData = async () => {
     try {/* TODO errorhandling */
       const entryItems = await fetch('http://localhost:8000/rezepte').then((response) => { return response.json() });
-      console.log("ENTRIES: ", entryItems);
-      /* TODO setRecipes(entryItems.items); */
+
+      setRecipes(entryItems.data);
     } catch (e) { console.log(e) }
 
 
@@ -47,7 +42,6 @@ function App() {
   return (
     <>
       <div className="container-fluid">
-        {/*  TODO variable anpassen? */}
         <NavBar recipes={recipes} />
         <Kopf />
       </div >
@@ -56,11 +50,9 @@ function App() {
           <h2>Die beliebtesten Rezepte im {monthArray[month]}</h2>
           <div className="row row-cols-1 row-cols-md-2 g-4">
             {
-              /* TODO variable anpassen? */
               recipes.map((recipe, i) => {
-                /* variablen anpassen */
-                return (<div id={recipe.sys.id} >
-                  < Rezept key={recipe.sys.id} recipe={recipe} />
+                return (<div id={recipe.id} >
+                  < Rezept key={recipe.id} recipe={recipe} />
                 </div>
                 )
               })
