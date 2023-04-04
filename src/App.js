@@ -16,16 +16,12 @@ function App() {
   const [recipes, setRecipes] = useState([])
 
   const getData = async () => {
-    /* rezeptdaten daten holen */
-    /* zutaten holen(inkl. masseinheit) */
-    /* zubereitungen holen */
-    /* rezeptobjekt erstellen aus: id, name, bild von rezeptdaten + (zutatenname,menge,masseinheit aus zutaten) liste nach rezeptId + (schritt aus zubereitung) liste nach rezeptId */
-    /* rezeptobjekt zu recipes hinzufügen */
-    /* evtl schon in api */
+    try {/* TODO errorhandling */
+      const entryItems = await fetch('http://localhost:8000/rezepte').then((response) => { return response.json() });
+      console.log("ENTRIES: ", entryItems);
+      /* TODO setRecipes(entryItems.items); */
+    } catch (e) { console.log(e) }
 
-    const entryItems = await client.getEntries();
-    console.log("ENTRIES: ", entryItems.items);
-    setRecipes(entryItems.items);
 
   };
 
