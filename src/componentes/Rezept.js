@@ -11,7 +11,7 @@ export const Rezept = ({ recipe }) => {
             <div className="card h-100">
 
                 <div className="hovereffect">
-                    <img src={recipe.mainPic} alt={recipe.rezept_name} width="100%" />
+                    <img src={recipe.main_pic} alt={recipe.rezept_name} width="100%" />
                     <div className="overlay" >
                         <a className="info" onClick={() => setColapsed(!colapsed)} aria-controls="rezeptdetails">{recipe.rezept_name}</a>
                     </div>
