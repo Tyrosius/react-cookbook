@@ -12,9 +12,10 @@ function App() {
 
   const getData = async () => {
     try {/* TODO errorhandling */
-      const entryItems = await fetch('http://localhost:8000/rezepte').then((response) => { return response.json() });
+      const entryItems = await fetch('http://localhost:8000/rezepte');
+      const data = await entryItems.json();
 
-      setRecipes(entryItems.data);
+      setRecipes(data.data);
     } catch (e) { console.log(e) }
 
 
