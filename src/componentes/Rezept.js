@@ -22,6 +22,7 @@ export const Rezept = ({ recipe }) => {
 
                     <Collapse in={!colapsed}>
                         <div id="rezeptdetails">
+                            <h4>Zutaten:</h4>
                             <Zutatenliste ingredients={recipe.zutaten} />
                             <div>
                                 <h4>Zubereitung:</h4>
