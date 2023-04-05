@@ -32,7 +32,7 @@ export const NavBar = ({ recipes }) => {
                             {recipes ? recipes.map((recipe, i) => {
                                 return (
                                     <>
-                                        <Dropdown.Item href={`#${recipe.sys.id}`} eventKey={i}>{recipe.fields.rezeptName}</Dropdown.Item>
+                                        <Dropdown.Item href={`#${recipe.id}`} eventKey={i}>{recipe.rezept_name}</Dropdown.Item>
                                     </>
                                 )
                             }) : null}

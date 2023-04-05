@@ -1,34 +1,31 @@
 import { useState } from "react"
 import { Button, Collapse } from "react-bootstrap"
 import { Zutatenliste } from "./Zutatenliste"
-/* import { Rezeptbilder} from "./Rezeptbilder" */
 
 export const Rezept = ({ recipe }) => {
 
     const [colapsed, setColapsed] = useState(true)
 
-    const prepArray = recipe.fields.zubereitung_1.split("\n")
-
     return (
         <div className="col ">
             <div className="card h-100">
 
-                <div className="hovereffect">{/* TODO hauptbild einbauen */}
-                    <img src={recipe.fields.mainPic.fields.file.url} width="100%" />
+                <div className="hovereffect">
+                    <img src={recipe.mainPic} alt={recipe.rezept_name} width="100%" />
                     <div className="overlay" >
-                        <a className="info" onClick={() => setColapsed(!colapsed)} aria-controls="rezeptdetails">{recipe.fields.rezeptName}</a>
+                        <a className="info" onClick={() => setColapsed(!colapsed)} aria-controls="rezeptdetails">{recipe.rezept_name}</a>
                     </div>
                 </div>
 
                 <div className="card-body">
-                    <h5 className="card-title">{recipe.fields.rezeptName}</h5>
+                    <h5 className="card-title">{recipe.rezept_name}</h5>
 
                     <Collapse in={!colapsed}>
                         <div id="rezeptdetails">
-                            <Zutatenliste ingredients={recipe.fields.zutaten} />
+                            <Zutatenliste ingredients={recipe.zutaten} />
                             <div>
-                                <h4>{prepArray.splice(0, 1)}</h4>
-                                {prepArray.map((step) => {
+                                <h4>Zubereitung:</h4>
+                                {recipe.zubereitung.map((step) => {
                                     return (
                                         <p>{step}</p>
                                     )
@@ -37,19 +34,10 @@ export const Rezept = ({ recipe }) => {
                         </div>
                     </Collapse>
                     <Button onClick={() => setColapsed(!colapsed)} aria-controls="rezeptdetails" className="btn-rezept" >Zum
-                        Rezept</Button>{/* <!--für single page als popup?--> */}
+                        Rezept</Button>
 
 
                 </div>
             </div>
         </div>)
 }
-/*                 <DropdownButton variant="nav-item" title="Rezepte">
-                            {recipes ? recipes.map((recipe, i) => {
-                                return (
-                                    <>
-                                        <Dropdown.Item eventKey={i}>{recipe.fields.rezeptName}</Dropdown.Item>
-                                    </>
-                                )
-                            }) : null}
-                        </DropdownButton> */

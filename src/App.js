@@ -7,18 +7,17 @@ import { Rezept } from "./componentes/Rezept";
 import { NavBar } from "./componentes/NavBar";
 
 function App() {
-  const client = createClient({
-    space: "ge9j2kgjaink",
-    accessToken: "sTqTi2aDlEQqUaqMjFihRlAIBVvxdaxX8O-x74pvpPU",
-  })
-
 
   const [recipes, setRecipes] = useState([])
 
   const getData = async () => {
-    const entryItems = await client.getEntries();
-    console.log("ENTRIES: ", entryItems.items);
-    setRecipes(entryItems.items);
+    try {/* TODO errorhandling */
+      const entryItems = await fetch('http://localhost:8000/rezepte');
+      const data = await entryItems.json();
+
+      setRecipes(data.data);
+    } catch (e) { console.log(e) }
+
 
   };
 
@@ -44,31 +43,24 @@ function App() {
   return (
     <>
       <div className="container-fluid">
-        {/* NavBar componente */}
         <NavBar recipes={recipes} />
-        {/* Kopf componente */}
         <Kopf />
       </div >
       <div className="container-fluid">
         <div className="col-md-12 col-lg-8 mx-auto card-box">
           <h2>Die beliebtesten Rezepte im {monthArray[month]}</h2>
           <div className="row row-cols-1 row-cols-md-2 g-4">
-            {/*             <!--durch map ersetzen-->
- */}
             {
               recipes.map((recipe, i) => {
-                return (<div id={recipe.sys.id} >
-                  < Rezept key={recipe.sys.id} recipe={recipe} />
+                return (<div id={recipe.id} >
+                  < Rezept key={recipe.id} recipe={recipe} />
                 </div>
                 )
               })
             }
-            {/* rezept componente rezeptState mitgeben */}
-            {/*<!--ende durch map ersetzen-->
- */}          </div>
+          </div>
         </div>
       </div >
-      {/* footer componente logoState mitgeben*/}
       <Footer />
     </>
   );
