@@ -12,7 +12,7 @@ function App() {
 
   const getData = async () => {
     try {/* TODO errorhandling */
-      const entryItems = await fetch('http://localhost:8000/rezepte');
+      const entryItems = await fetch('https://naschbar-api.onrender.com/rezepte');
       const data = await entryItems.json();
 
       setRecipes(data.data);
